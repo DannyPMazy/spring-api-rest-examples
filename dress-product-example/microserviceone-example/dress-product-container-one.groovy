@@ -34,6 +34,14 @@ pipeline {
                 }
             }
         }
+        stage ('Post Deleting') {
+            steps {
+                script {
+                    sh "docker container rm MicroserviceA"
+                    sh "docker image rm dressproductone"
+                }
+            }
+        }
     }
 
     post {

@@ -21,7 +21,7 @@ pipeline {
                 script {
                     dir("dress-product-example/microservicethree-example") {
                         sh "docker build -t dressproductthree ."
-                        sh "docker container create --name MicroserviceB -p 8008:8008 dressproductthree"
+                        sh "docker container create --name MicroserviceC -p 8008:8008 dressproductthree"
                     }
                 }
             }
@@ -31,6 +31,14 @@ pipeline {
                 script {
                     echo "DressProductThree Container Successful"
                     echo "Test OK With Pipeline"
+                }
+            }
+        }
+        stage ('Post Deleting') {
+            steps {
+                script {
+                    sh "docker container rm MicroserviceC"
+                    sh "docker image rm dressproductthree"
                 }
             }
         }
@@ -48,3 +56,4 @@ pipeline {
         }
     }
 }
+

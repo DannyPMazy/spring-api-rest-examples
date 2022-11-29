@@ -29,8 +29,16 @@ pipeline {
         stage ('Echo Messages') {
             steps {
                 script {
-                    echo "DressProductTwo Container Successful"
+                    echo "DressProductOne Container Successful"
                     echo "Test OK With Pipeline"
+                }
+            }
+        }
+        stage ('Post Deleting') {
+            steps {
+                script {
+                    sh "docker container rm MicroserviceB"
+                    sh "docker image rm dressproducttwo"
                 }
             }
         }
@@ -48,3 +56,4 @@ pipeline {
         }
     }
 }
+
