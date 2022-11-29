@@ -29,7 +29,7 @@ pipeline {
         stage ('Echo Messages') {
             steps {
                 script {
-                    echo "DressProductOne Container Successful"
+                    echo "DressProductTwo Container Successful"
                     echo "Test OK With Pipeline"
                 }
             }
